@@ -1,0 +1,162 @@
+/* styles.css - Global Team Clock Custom Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-primary: #F5F3EF;
+  --bg-alt: #ECE9E3;
+  --surface: #FEFDFB;
+  --primary: #0D9488;
+  --primary-hover: #14B8A6;
+  --secondary: #F97316;
+  --timeline-day: #FEF3C7;
+  --timeline-night: #E0E7FF;
+  --work-overlay: rgba(34, 197, 94, 0.25);
+  --overlap-zone: rgba(34, 197, 94, 0.5);
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --border: #D1D5DB;
+  --current-time: #EF4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grid for 24 columns */
+.grid-cols-24 {
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+}
+
+/* Timeline styles */
+.timeline-bar {
+  position: relative;
+}
+
+.current-time-marker {
+  pointer-events: none;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.clock-display {
+  letter-spacing: 0.05em;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Search dropdown */
+#city-dropdown {
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Ad placeholder */
+.ad-placeholder {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: var(--bg-alt);
+}
+
+/* Toast animation */
+#toast {
+  transition: all 0.3s ease;
+}
+
+/* Modal */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .city-info {
+    width: 100% !important;
+    padding-right: 0 !important;
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline-bar {
+    height: 2rem !important;
+  }
+
+  .timeline-header {
+    padding-left: 0 !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .ad-placeholder,
+  #city-search-container,
+  #popular-cities,
+  .remove-city-btn,
+  footer {
+    display: none !important;
+  }
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}

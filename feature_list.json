@@ -1,0 +1,22 @@
+{
+  "project": "GlobalTeamClock",
+  "features": [
+    { "id": "F01", "name": "Project Scaffold & Tailwind Setup", "milestone": 1, "status": "complete" },
+    { "id": "F02", "name": "Timezone Data Engine (Intl API)", "milestone": 1, "status": "complete" },
+    { "id": "F03", "name": "City Selector (Searchable)", "milestone": 2, "status": "complete" },
+    { "id": "F04", "name": "Live Clock Per City", "milestone": 2, "status": "complete" },
+    { "id": "F05", "name": "Horizontal 24h Timeline Bars", "milestone": 3, "status": "complete" },
+    { "id": "F06", "name": "Working Hours Overlay (Adjustable)", "milestone": 3, "status": "complete" },
+    { "id": "F07", "name": "Overlap Highlight Zone", "milestone": 3, "status": "complete" },
+    { "id": "F08", "name": "Find Best Meeting Time Button", "milestone": 4, "status": "complete" },
+    { "id": "F09", "name": "Share Link via URL Params", "milestone": 4, "status": "complete" },
+    { "id": "F10", "name": "Auto i18n (8+ Languages)", "milestone": 5, "status": "complete" },
+    { "id": "F11", "name": "SEO Optimization", "milestone": 5, "status": "complete" },
+    { "id": "F12", "name": "Ad Integration (Adsterra + AdSense)", "milestone": 6, "status": "complete" },
+    { "id": "F13", "name": "Google Sheets Webhook", "milestone": 6, "status": "complete" },
+    { "id": "F14", "name": "Visitor Counter (Today + Total)", "milestone": 6, "status": "complete" },
+    { "id": "F15", "name": "Feedback & Social Sharing", "milestone": 7, "status": "complete" },
+    { "id": "F16", "name": "Static Pages (About, FAQ, Privacy, Terms)", "milestone": 7, "status": "complete" },
+    { "id": "F17", "name": "Deployment to Vercel", "milestone": 8, "status": "complete" }
+  ]
+}

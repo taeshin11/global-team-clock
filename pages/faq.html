@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Global Team Clock</title>
+  <meta name="description" content="Frequently asked questions about Global Team Clock. Learn how to use the timezone overlap dashboard, adjust work hours, find meeting times, and more.">
+  <link rel="canonical" href="https://global-team-clock.vercel.app/pages/faq.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021" crossorigin="anonymous"></script>
+</head>
+<body class="min-h-screen" style="background-color: #F5F3EF;">
+  <header class="border-b border-gray-200" style="background-color: #FEFDFB;">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <span class="text-2xl">🌍</span>
+          <span class="text-lg font-bold text-gray-800">Global Team Clock</span>
+        </a>
+        <nav class="flex items-center gap-4 text-sm text-gray-600">
+          <a href="../index.html" class="hover:text-teal-600 transition-colors">Home</a>
+          <a href="about.html" class="hover:text-teal-600 transition-colors">About</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <article class="rounded-xl p-8 shadow-sm border border-gray-100" style="background-color: #FEFDFB;">
+      <h1 class="text-3xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h1>
+
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">How do I add a city?</h2>
+          <p class="text-gray-600">Type a city name or timezone in the search bar at the top. You can search by city name (e.g., "Tokyo"), country name, or IANA timezone ID (e.g., "Asia/Tokyo"). Click on a result to add it. You can also click the popular city buttons below the search bar.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">How many cities can I add?</h2>
+          <p class="text-gray-600">You can add up to 10 cities at the same time. This keeps the timeline view readable and the tool performant.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">How do I adjust working hours?</h2>
+          <p class="text-gray-600">Each city row has "Start" and "End" dropdown menus for working hours. The default is 09:00-18:00. Change these to match each team member's actual work schedule. The green overlay on the timeline will update automatically.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">What does the "Apply to All" button do?</h2>
+          <p class="text-gray-600">It copies the first city's working hours to all other cities. Useful when everyone works the same schedule in their local time.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">How does "Find Best Meeting Time" work?</h2>
+          <p class="text-gray-600">The algorithm finds all 1-hour slots where all cities have overlapping work hours. It ranks them by preference (midday is preferred over early morning). If no full overlap exists, it suggests the "least bad" option where the most cities are in their work hours.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">How do I share my configuration?</h2>
+          <p class="text-gray-600">Click the "Copy Share Link" button. The URL automatically updates as you add/remove cities and change work hours. Anyone who opens the link will see the exact same configuration.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">What do the colors on the timeline mean?</h2>
+          <p class="text-gray-600">
+            <strong>Soft yellow</strong>: Daytime hours (6:00-18:00)<br>
+            <strong>Soft indigo</strong>: Nighttime hours (18:00-6:00)<br>
+            <strong>Light green overlay</strong>: Working hours for that city<br>
+            <strong>Bright green overlay</strong>: Hours where ALL cities' work hours overlap<br>
+            <strong>Red line</strong>: Current time in that city
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">Does this handle Daylight Saving Time (DST)?</h2>
+          <p class="text-gray-600">Yes! Global Team Clock uses the browser's built-in Intl API, which automatically handles DST transitions. The offsets shown are always current and accurate.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">What about half-hour timezones like India (UTC+5:30)?</h2>
+          <p class="text-gray-600">Fully supported. The tool handles all timezone offsets including +5:30 (India), +5:45 (Nepal), +9:30 (Central Australia), and others.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">Do you collect any data?</h2>
+          <p class="text-gray-600">Global Team Clock runs entirely in your browser. No timezone data or city selections are sent to any server. We use localStorage for language preferences and visitor counting. See our <a href="privacy.html" class="text-teal-600 hover:underline">Privacy Policy</a> for details.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">Can I use this on mobile?</h2>
+          <p class="text-gray-600">Yes, Global Team Clock is fully responsive and works on phones and tablets. On smaller screens, the city info and timeline stack vertically for better readability.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold text-gray-700 mb-2">Is it free?</h2>
+          <p class="text-gray-600">Yes, completely free. No sign-up required, no limitations, no premium tier.</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="border-t border-gray-200 mt-12" style="background-color: #FEFDFB;">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 text-sm text-gray-500">
+        <nav class="flex flex-wrap gap-4">
+          <a href="../index.html" class="hover:text-teal-600">Home</a>
+          <a href="about.html" class="hover:text-teal-600">About</a>
+          <a href="privacy.html" class="hover:text-teal-600">Privacy</a>
+          <a href="terms.html" class="hover:text-teal-600">Terms</a>
+        </nav>
+        <span>&copy; 2026 Global Team Clock</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

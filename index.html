@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Team Clock - Timezone Overlap Dashboard for Remote Teams</title>
+  <meta name="description" content="Visual timezone overlap tool for remote teams. Find overlapping work hours across cities, schedule meetings, and share configurations. Free, no API needed.">
+  <meta name="keywords" content="timezone overlap, remote team clock, world clock for teams, timezone converter, meeting time finder, work hours overlap tool">
+  <meta name="author" content="Global Team Clock">
+  <link rel="canonical" href="https://global-team-clock.vercel.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Global Team Clock - Timezone Overlap Dashboard">
+  <meta property="og:description" content="Visual timezone overlap tool for remote teams. Find overlapping work hours across multiple cities and timezones.">
+  <meta property="og:url" content="https://global-team-clock.vercel.app/">
+  <meta property="og:image" content="https://global-team-clock.vercel.app/images/og-image.png">
+  <meta property="og:site_name" content="Global Team Clock">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Global Team Clock - Timezone Overlap Dashboard">
+  <meta name="twitter:description" content="Visual timezone overlap tool for remote teams. Find the best meeting times across timezones.">
+  <meta name="twitter:image" content="https://global-team-clock.vercel.app/images/og-image.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Global Team Clock",
+    "description": "Timezone Overlap Dashboard for Remote Teams. Find overlapping work hours across multiple cities and timezones.",
+    "url": "https://global-team-clock.vercel.app/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser with JavaScript enabled",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Global Team Clock"
+    }
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'warm-gray': '#F5F3EF',
+            'warm-gray-dark': '#ECE9E3',
+            'surface': '#FEFDFB',
+          },
+          gridTemplateColumns: {
+            '24': 'repeat(24, minmax(0, 1fr))',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7098271335538021" crossorigin="anonymous"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+</head>
+<body class="min-h-screen" style="background-color: #F5F3EF;">
+
+  <!-- Header -->
+  <header class="border-b border-gray-200" style="background-color: #FEFDFB;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl" role="img" aria-label="Globe">🌍</span>
+          <div>
+            <h1 class="text-lg font-bold text-gray-800" data-i18n="title">Global Team Clock</h1>
+            <p class="text-xs text-gray-500 hidden sm:block" data-i18n="subtitle">Timezone Overlap Dashboard for Remote Teams</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <select id="lang-select" class="text-sm border border-gray-200 rounded-lg px-2 py-1.5 bg-white text-gray-700 cursor-pointer" aria-label="Select language">
+          </select>
+          <nav class="hidden md:flex items-center gap-4 text-sm text-gray-600">
+            <a href="pages/about.html" class="hover:text-teal-600 transition-colors" data-i18n="about">About</a>
+            <a href="pages/faq.html" class="hover:text-teal-600 transition-colors" data-i18n="faq">FAQ</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Adsterra Top Banner -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3">
+    <div data-adsterra-key="top-banner" class="ad-placeholder text-center text-gray-400 text-sm py-2 rounded-lg" style="min-height: 50px; border: 1px dashed #D1D5DB; background: #ECE9E3;">
+      Advertisement
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <div class="flex flex-col lg:flex-row gap-6">
+      <!-- Main Panel -->
+      <div class="flex-1 min-w-0">
+
+        <!-- City Search & Controls -->
+        <div class="rounded-xl p-4 mb-6 shadow-sm border border-gray-100" style="background-color: #FEFDFB;">
+          <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+            <!-- Search Input -->
+            <div class="relative flex-1 w-full" id="city-search-container">
+              <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input type="text" id="city-search" data-i18n="search_city" placeholder="Search city or timezone..."
+                  class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-teal-400 focus:ring-1 focus:ring-teal-400 outline-none"
+                  aria-label="Search for a city or timezone" autocomplete="off">
+              </div>
+              <div id="city-dropdown" class="hidden absolute z-20 top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-2 flex-shrink-0">
+              <button id="find-meeting-btn" class="px-4 py-2.5 bg-teal-500 text-white text-sm font-medium rounded-lg hover:bg-teal-600 transition-colors flex items-center gap-2 whitespace-nowrap" aria-label="Find best meeting time">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span data-i18n="find_meeting">Find Best Meeting Time</span>
+              </button>
+              <button id="share-link-btn" class="px-4 py-2.5 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2 whitespace-nowrap" aria-label="Copy share link">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                </svg>
+                <span data-i18n="share_link">Copy Share Link</span>
+              </button>
+              <button id="apply-all-btn" class="px-3 py-2.5 border border-gray-200 text-gray-600 text-sm rounded-lg hover:bg-gray-50 transition-colors whitespace-nowrap" title="Apply first city's work hours to all" aria-label="Apply work hours to all cities">
+                <span data-i18n="apply_all">Apply to All</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Popular Cities -->
+          <div class="mt-3">
+            <span class="text-xs text-gray-400 mr-2" data-i18n="popular_cities">Popular Cities</span>
+            <div id="popular-cities" class="inline-flex flex-wrap gap-2 mt-1">
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Legend -->
+        <div class="flex flex-wrap gap-4 mb-4 text-xs text-gray-500">
+          <div class="flex items-center gap-1.5">
+            <div class="w-4 h-3 rounded" style="background-color: #FEF3C7; border: 1px solid #E5E7EB;"></div>
+            <span data-i18n="day">Day</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-4 h-3 rounded" style="background-color: #E0E7FF; border: 1px solid #E5E7EB;"></div>
+            <span data-i18n="night">Night</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-4 h-3 rounded" style="background-color: rgba(34, 197, 94, 0.2); border: 1px solid #E5E7EB;"></div>
+            <span data-i18n="work">Work</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-4 h-3 rounded" style="background-color: rgba(34, 197, 94, 0.5); border: 1px solid #E5E7EB;"></div>
+            <span data-i18n="overlap">Overlap</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-4 h-0.5 bg-red-500"></div>
+            <span>Current Time</span>
+          </div>
+        </div>
+
+        <!-- Timeline Container -->
+        <div id="timeline-container" class="rounded-xl p-4 shadow-sm border border-gray-100" style="background-color: #FEFDFB;">
+        </div>
+
+        <!-- AdSense slot below timeline -->
+        <div class="mt-4">
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7098271335538021"
+            data-ad-slot="auto"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        </div>
+      </div>
+
+      <!-- Sidebar Ad (Desktop) -->
+      <div class="hidden lg:block w-72 flex-shrink-0">
+        <div class="sticky top-6">
+          <div data-adsterra-key="sidebar" class="ad-placeholder text-center text-gray-400 text-sm py-16 rounded-lg" style="min-height: 250px; border: 1px dashed #D1D5DB; background: #ECE9E3;">
+            Advertisement
+          </div>
+
+          <!-- Social Sharing -->
+          <div class="mt-6 rounded-xl p-4 shadow-sm border border-gray-100" style="background-color: #FEFDFB;">
+            <h3 class="font-semibold text-gray-700 mb-3" data-i18n="share">Share</h3>
+            <div class="flex flex-col gap-2">
+              <button id="share-twitter" class="flex items-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors text-gray-700">
+                <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span data-i18n="share_twitter">Share on Twitter</span>
+              </button>
+              <button id="share-linkedin" class="flex items-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 hover:bg-blue-50 hover:border-blue-200 transition-colors text-gray-700">
+                <svg class="w-4 h-4 text-blue-700" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <span data-i18n="share_linkedin">Share on LinkedIn</span>
+              </button>
+              <button id="share-email" class="flex items-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors text-gray-700">
+                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span data-i18n="share_email">Share via Email</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 mt-12" style="background-color: #FEFDFB;">
+    <!-- Footer Ad Banner -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div data-adsterra-key="footer-banner" class="ad-placeholder text-center text-gray-400 text-sm py-2 rounded-lg" style="min-height: 50px; border: 1px dashed #D1D5DB; background: #ECE9E3;">
+        Advertisement
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4 text-sm text-gray-500">
+          <span id="visitor-counter">Today: 0 | Total: 0</span>
+        </div>
+        <nav class="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+          <a href="pages/about.html" class="hover:text-teal-600 transition-colors" data-i18n="about">About</a>
+          <a href="pages/faq.html" class="hover:text-teal-600 transition-colors" data-i18n="faq">FAQ</a>
+          <a href="pages/privacy.html" class="hover:text-teal-600 transition-colors" data-i18n="privacy">Privacy Policy</a>
+          <a href="pages/terms.html" class="hover:text-teal-600 transition-colors" data-i18n="terms">Terms of Service</a>
+          <button id="feedback-btn" class="hover:text-teal-600 transition-colors" data-i18n="feedback">Feedback</button>
+        </nav>
+        <div class="text-sm text-gray-400">
+          &copy; 2026 Global Team Clock. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Meeting Time Modal -->
+  <div id="meeting-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center modal-backdrop">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto p-6 relative">
+      <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1" aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div id="meeting-modal-content">
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/timezone.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/ads.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Google Apps Script Webhook Reference -->
+  <!--
+  Google Sheets Webhook Setup:
+  1. Create a Google Sheet
+  2. Go to Extensions > Apps Script
+  3. Paste this code:
+
+  function doPost(e) {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      new Date(),
+      data.action,
+      data.detail,
+      data.language,
+      data.referrer,
+      data.userAgent
+    ]);
+    return ContentService.createTextOutput(
+      JSON.stringify({ status: "ok" })
+    ).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  4. Deploy as Web App (Execute as: Me, Access: Anyone)
+  5. Copy the URL and set it in js/analytics.js WEBHOOK_URL
+  -->
+</body>
+</html>
