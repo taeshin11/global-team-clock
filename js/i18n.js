@@ -399,11 +399,21 @@ const I18n = (() => {
   let currentLang = 'EN';
 
   function detect() {
+    // 1. Check ?lang=xx URL parameter first
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = (urlParams.get('lang') || '').toUpperCase();
+    if (urlLang && translations[urlLang]) {
+      currentLang = urlLang;
+      localStorage.setItem('gtc-lang', urlLang);
+      return currentLang;
+    }
+    // 2. Check localStorage
     const saved = localStorage.getItem('gtc-lang');
     if (saved && translations[saved]) {
       currentLang = saved;
       return currentLang;
     }
+    // 3. Auto-detect from browser language
     const browserLang = (navigator.language || 'en').toUpperCase().split('-')[0];
     const langMap = { EN: 'EN', KO: 'KO', JA: 'JA', ZH: 'ZH', ES: 'ES', DE: 'DE', FR: 'FR', PT: 'PT' };
     currentLang = langMap[browserLang] || 'EN';
