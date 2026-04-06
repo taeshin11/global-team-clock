@@ -1,9 +1,13 @@
 {
   "rewrites": [
     { "source": "/about", "destination": "/pages/about.html" },
+    { "source": "/about.html", "destination": "/pages/about.html" },
     { "source": "/faq", "destination": "/pages/faq.html" },
+    { "source": "/faq.html", "destination": "/pages/faq.html" },
     { "source": "/privacy", "destination": "/pages/privacy.html" },
-    { "source": "/terms", "destination": "/pages/terms.html" }
+    { "source": "/privacy.html", "destination": "/pages/privacy.html" },
+    { "source": "/terms", "destination": "/pages/terms.html" },
+    { "source": "/terms.html", "destination": "/pages/terms.html" }
   ],
   "headers": [
     {
