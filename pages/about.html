@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Global Team Clock</title>
-  <meta name="description" content="About Global Team Clock - A free timezone overlap dashboard for remote teams to find the best meeting times across multiple timezones.">
+  <title>About Global Team Clock - World Clock for Remote Teams Across Time Zones</title>
+  <meta name="description" content="Global Team Clock helps remote teams, freelancers, and travelers see current times in multiple cities at once. Add cities, switch 12/24h format, dark/light mode, 8 languages supported.">
+  <meta name="keywords" content="world clock remote teams, time zone dashboard, global team scheduling, meeting time across time zones, work hours overlap, distributed team clock">
   <link rel="canonical" href="https://global-team-clock.vercel.app/pages/about.html">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/styles.css">
@@ -32,41 +33,75 @@
       <h1 class="text-3xl font-bold text-gray-800 mb-6">About Global Team Clock</h1>
 
       <section class="prose prose-gray max-w-none">
-        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">What is Global Team Clock?</h2>
+
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">The Challenge of Working Across Time Zones</h2>
         <p class="text-gray-600 mb-4">
-          Global Team Clock is a free, visual timezone overlap dashboard designed specifically for remote teams. It helps you find the best overlapping work hours across multiple cities and timezones, making it easier to schedule meetings, standups, and collaborative work sessions.
+          Remote work has redefined where teams can live and how they collaborate. A startup can have engineers in Berlin, designers in São Paulo, and a product manager in Seoul — all working toward the same goal from opposite ends of the globe. But as distributed teams grow, a fundamental frustration arises every single day: figuring out what time it is for everyone else and finding a window when the whole team can talk.
+        </p>
+        <p class="text-gray-600 mb-4">
+          The math alone is exhausting. If it is 3:00 PM in New York, is that 9:00 PM or 8:00 PM in Berlin right now — is Germany on summer time yet? What about Bangalore? And is the person in Sydney heading to lunch or wrapping up their evening? Multiply these questions across a six-person team and scheduling a single 30-minute standup can consume more mental energy than the meeting itself. Global Team Clock was built to eliminate that friction entirely.
         </p>
 
-        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Why We Built This</h2>
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">What Is Global Team Clock?</h2>
         <p class="text-gray-600 mb-4">
-          As remote work becomes the norm, teams are increasingly distributed across the globe. Coordinating across timezones is one of the biggest challenges remote teams face. We built Global Team Clock to make this process visual, intuitive, and fast.
+          Global Team Clock is a free, browser-based world clock and timezone overlap dashboard designed specifically for the realities of distributed work. It lets you add up to ten cities and see their current local times displayed simultaneously in a clean, visual interface. Rather than jumping between multiple clocks or doing mental arithmetic, you see every relevant timezone on one screen, updated in real time, with clear markers for who is in their workday and who is not.
+        </p>
+        <p class="text-gray-600 mb-4">
+          The tool goes beyond simply displaying times. Each city shows a 24-hour timeline bar with day and night shading, a colored overlay representing that city's working hours, and a live marker for the current moment. When working hours from different cities happen to overlap, those shared windows are highlighted automatically, making the best meeting slots instantly visible without any calculation on your part.
         </p>
 
-        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Key Features</h2>
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Key Features at a Glance</h2>
         <ul class="list-disc list-inside text-gray-600 mb-4 space-y-2">
-          <li>Add up to 10 cities and see their timezones side by side</li>
-          <li>Visual 24-hour timeline bars with day/night indicators</li>
-          <li>Adjustable working hours per city</li>
-          <li>Automatic overlap detection and highlighting</li>
-          <li>Smart "Find Best Meeting Time" algorithm</li>
-          <li>Share your configuration via URL</li>
-          <li>Available in 8 languages</li>
-          <li>Works entirely in your browser - no data sent to servers</li>
+          <li><strong>Add and remove cities freely</strong> — search by city name, country, or IANA timezone ID and build your custom team dashboard in seconds.</li>
+          <li><strong>Live current time display</strong> — all clocks update every minute so you always see accurate, real-time local times.</li>
+          <li><strong>12-hour and 24-hour format toggle</strong> — switch between AM/PM and 24-hour display to match your personal preference or regional convention.</li>
+          <li><strong>Dark mode and light mode</strong> — choose the visual theme that suits your environment and reduces eye strain during long work sessions.</li>
+          <li><strong>Adjustable working hours per city</strong> — set custom start and end times for each team member's working day to reflect real schedules.</li>
+          <li><strong>Automatic overlap detection</strong> — shared working windows across all added cities are highlighted in bright green, so the best meeting slots are obvious at a glance.</li>
+          <li><strong>Find Best Meeting Time algorithm</strong> — one click surfaces the optimal 1-hour slot where the most team members are simultaneously in their working hours.</li>
+          <li><strong>Shareable URL</strong> — your entire configuration is encoded in the page URL, so you can send a link to a colleague and they see exactly the same dashboard.</li>
+          <li><strong>8-language support</strong> — the interface is fully localized in English, Korean, Japanese, Chinese, Spanish, French, German, and Portuguese.</li>
+          <li><strong>No account or installation required</strong> — works entirely in any modern browser with zero setup.</li>
         </ul>
 
-        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Privacy First</h2>
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Who Uses Global Team Clock?</h2>
         <p class="text-gray-600 mb-4">
-          Global Team Clock runs entirely in your browser using the built-in JavaScript Intl API. No timezone data is sent to any server. Your city selections and work hour preferences are stored only in your browser's URL and local storage.
+          <strong>Distributed engineering and product teams</strong> are the most common users. When a team is spread across multiple continents, the overlap window for synchronous collaboration might be just a few hours — or sometimes none at all. Global Team Clock makes that reality visible and helps managers plan standups, sprint reviews, and one-on-ones during the hours that genuinely work for everyone rather than guessing.
+        </p>
+        <p class="text-gray-600 mb-4">
+          <strong>Freelancers and independent contractors</strong> working with international clients rely on Global Team Clock to keep track of multiple client timezones at once. A designer based in Warsaw managing clients in Chicago, Dubai, and Singapore can pin all four cities and know at a glance when each client is available for a call without doing the conversion every time.
+        </p>
+        <p class="text-gray-600 mb-4">
+          <strong>Customer support and operations teams</strong> covering global users need to know which time zones are active during their shift. Support leads can use Global Team Clock to plan coverage handoffs, ensuring that no region goes unserved during peak hours.
+        </p>
+        <p class="text-gray-600 mb-4">
+          <strong>Travelers and digital nomads</strong> use Global Team Clock to stay oriented across multiple destinations — tracking home time, destination time, and the times where family, clients, or co-workers are located, all in a single view.
+        </p>
+        <p class="text-gray-600 mb-4">
+          <strong>Academic collaborations and non-profit organizations</strong> with global volunteers also find the tool invaluable for coordinating across regions where participants span a dozen time zones and meeting windows are narrow.
         </p>
 
-        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Technology</h2>
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Daylight Saving Time Handled Automatically</h2>
         <p class="text-gray-600 mb-4">
-          Built with vanilla HTML, CSS, and JavaScript. Uses the native <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">Intl.DateTimeFormat</code> and <code class="bg-gray-100 px-1 py-0.5 rounded text-sm">Intl.supportedValuesOf('timeZone')</code> APIs for accurate timezone data. No external API calls needed.
+          One of the most common sources of scheduling errors in global teams is Daylight Saving Time (DST). Countries transition on different dates — the United States and Canada move clocks in March, most of Europe follows in late March as well, while Australia shifts in October. Some regions like India, China, and Japan do not observe DST at all. Getting these transitions wrong by even an hour can mean missing an important call or leaving a client waiting.
+        </p>
+        <p class="text-gray-600 mb-4">
+          Global Team Clock uses the browser's built-in <code style="background:#f0efeb; padding:2px 4px; border-radius:3px;">Intl.DateTimeFormat</code> API, which relies on the IANA Time Zone Database — the same authoritative source used by operating systems and programming languages worldwide. All DST transitions are handled correctly and automatically. The UTC offset displayed for each city is always current, not a static value that becomes wrong when clocks change.
         </p>
 
-        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Contact</h2>
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Privacy by Design</h2>
         <p class="text-gray-600 mb-4">
-          Have feedback or suggestions? We'd love to hear from you!<br>
+          Global Team Clock performs all calculations locally in your browser. No city names, working hour preferences, or timezone data are ever transmitted to a server. Your configuration lives in the URL and in your browser's local storage — fully under your control. There is no user account, no data retention on our end, and no risk that your team's internal scheduling information is collected by a third party. This privacy-first approach is a deliberate design choice, not an afterthought.
+        </p>
+
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Built for the Modern Web</h2>
+        <p class="text-gray-600 mb-4">
+          The tool is built with vanilla HTML, CSS, and JavaScript — no heavyweight frameworks, no external API calls for timezone data. This keeps the page fast, reliable, and functional even on slow connections. The responsive layout adapts cleanly to smartphones, tablets, and desktops, so team members can check the clock from any device without a degraded experience.
+        </p>
+
+        <h2 class="text-xl font-semibold text-gray-700 mt-6 mb-3">Get in Touch</h2>
+        <p class="text-gray-600 mb-4">
+          We are always looking to improve Global Team Clock based on how real teams actually use it. If you have a feature request, found a bug, or simply want to share how the tool has helped your team, we would love to hear from you.<br>
           Email: <a href="mailto:taeshinkim11@gmail.com?subject=Global%20Team%20Clock%20Feedback" class="text-teal-600 hover:underline">taeshinkim11@gmail.com</a>
         </p>
       </section>
@@ -78,9 +113,10 @@
       <div class="flex flex-wrap items-center justify-between gap-4 text-sm text-gray-500">
         <nav class="flex flex-wrap gap-4">
           <a href="../index.html" class="hover:text-teal-600">Home</a>
+          <a href="about.html" class="hover:text-teal-600">About</a>
           <a href="faq.html" class="hover:text-teal-600">FAQ</a>
-          <a href="privacy.html" class="hover:text-teal-600">Privacy</a>
-          <a href="terms.html" class="hover:text-teal-600">Terms</a>
+          <a href="privacy.html" class="hover:text-teal-600">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-teal-600">Terms of Service</a>
         </nav>
         <span>&copy; 2026 Global Team Clock</span>
       </div>

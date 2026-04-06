@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ - Global Team Clock</title>
-  <meta name="description" content="Frequently asked questions about Global Team Clock. Learn how to use the timezone overlap dashboard, adjust work hours, find meeting times, and more.">
+  <title>FAQ - Global Team Clock | Timezone Dashboard Questions Answered</title>
+  <meta name="description" content="Frequently asked questions about Global Team Clock. Learn how to add cities, switch time formats, handle DST, schedule meetings across time zones, and more.">
+  <meta name="keywords" content="global team clock FAQ, timezone dashboard help, how to schedule across time zones, DST daylight saving time, world clock questions">
   <link rel="canonical" href="https://global-team-clock.vercel.app/pages/faq.html">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/styles.css">
@@ -31,72 +32,53 @@
     <article class="rounded-xl p-8 shadow-sm border border-gray-100" style="background-color: #FEFDFB;">
       <h1 class="text-3xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h1>
 
-      <div class="space-y-6">
+      <div class="space-y-8">
+
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">How do I add a city?</h2>
-          <p class="text-gray-600">Type a city name or timezone in the search bar at the top. You can search by city name (e.g., "Tokyo"), country name, or IANA timezone ID (e.g., "Asia/Tokyo"). Click on a result to add it. You can also click the popular city buttons below the search bar.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">How many cities can I add to my dashboard?</h2>
+          <p class="text-gray-600">Global Team Clock supports up to ten cities displayed simultaneously on your dashboard. This limit exists to keep the 24-hour timeline view legible and ensure the interface remains clear and performant even on smaller screens. In practice, most remote teams have between three and seven key locations, which fits comfortably within this range. To add a city, type its name, country, or IANA timezone identifier into the search bar at the top of the page. As you type, matching suggestions appear instantly — click one to add it. You can also tap the preset popular-city buttons below the search bar to add major global hubs in one click. To remove a city, click the close button on that city's row. Your selection is always reflected in the page URL, so you can bookmark your exact configuration or share it with a colleague.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">How many cities can I add?</h2>
-          <p class="text-gray-600">You can add up to 10 cities at the same time. This keeps the timeline view readable and the tool performant.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">Does Global Team Clock work offline or without an internet connection?</h2>
+          <p class="text-gray-600">Yes, with an important distinction. The core clock functionality works entirely in your browser using the native JavaScript <code style="background:#f0efeb; padding:2px 4px; border-radius:3px;">Intl</code> API — no external timezone API is called at runtime, so once the page is loaded, the clocks continue to tick and display correct local times even if your connection drops. All timezone calculations, DST adjustments, and overlap detection happen locally on your device. However, the initial page load requires an internet connection to fetch the Tailwind CSS framework from the CDN and to load the page itself from Vercel's servers. If you anticipate needing the tool in a low-connectivity situation, simply open the page while connected and keep the browser tab open. The clocks will continue to update accurately for as long as the tab remains open, regardless of your subsequent network status.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">How do I adjust working hours?</h2>
-          <p class="text-gray-600">Each city row has "Start" and "End" dropdown menus for working hours. The default is 09:00-18:00. Change these to match each team member's actual work schedule. The green overlay on the timeline will update automatically.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">How do I switch between 12-hour and 24-hour time formats?</h2>
+          <p class="text-gray-600">Use the format toggle button in the toolbar area of the main dashboard — it is labeled with the current format (either "12h" or "24h"). Clicking it instantly switches all clocks on screen between 12-hour AM/PM notation and 24-hour military-style notation. Your preference is remembered in the page URL state, so if you share the link, recipients will see the same format you were using. The 24-hour format is particularly useful for international teams, as it eliminates the AM/PM ambiguity that can cause confusion when communicating across regions that use different conventions. The 12-hour format with AM/PM is more familiar to users in the United States, Canada, and a few other countries, so the choice is entirely personal. Both formats display identical time information — only the visual presentation differs.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">What does the "Apply to All" button do?</h2>
-          <p class="text-gray-600">It copies the first city's working hours to all other cities. Useful when everyone works the same schedule in their local time.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">What timezone database powers Global Team Clock, and how accurate is it?</h2>
+          <p class="text-gray-600">Global Team Clock relies on the IANA Time Zone Database (also known as the Olson database or tz database), which is the world's authoritative reference for timezone rules, UTC offsets, and historical and future Daylight Saving Time transitions. This is the same database embedded in operating systems like Linux, macOS, Android, iOS, and Windows, as well as all major programming languages. Your browser exposes this data through the JavaScript <code style="background:#f0efeb; padding:2px 4px; border-radius:3px;">Intl.DateTimeFormat</code> and <code style="background:#f0efeb; padding:2px 4px; border-radius:3px;">Intl.supportedValuesOf('timeZone')</code> APIs, which Global Team Clock uses directly. Because the data comes from your browser's built-in timezone engine rather than a third-party API, the accuracy of the displayed times is as good as the accuracy of your device's own system clock and timezone database — in other words, extremely reliable for virtually all practical use cases.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">How does "Find Best Meeting Time" work?</h2>
-          <p class="text-gray-600">The algorithm finds all 1-hour slots where all cities have overlapping work hours. It ranks them by preference (midday is preferred over early morning). If no full overlap exists, it suggests the "least bad" option where the most cities are in their work hours.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">How do I use Global Team Clock to schedule a meeting across multiple time zones?</h2>
+          <p class="text-gray-600">Start by adding every city where your team members are located. Next, adjust the working hours for each city row to reflect that person's actual daily schedule — not everyone works a standard 9-to-5. For instance, an early bird in Tokyo might work 8:00–17:00 while a colleague in London prefers 10:00–19:00. Once all cities and working hours are set, the timeline view will automatically highlight in bright green any time slots where all cities' working hours overlap. These are your ideal meeting windows. If you want the tool to surface the single best option automatically, click the "Find Best Meeting Time" button. The algorithm evaluates all possible 1-hour slots, prioritizes windows where the most team members are within their working hours, and then prefers midday times over early morning or late evening when multiple slots are equally good. The result is a clear recommendation you can share directly with your team via the "Copy Share Link" button.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">How do I share my configuration?</h2>
-          <p class="text-gray-600">Click the "Copy Share Link" button. The URL automatically updates as you add/remove cities and change work hours. Anyone who opens the link will see the exact same configuration.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">How does Global Team Clock handle Daylight Saving Time (DST) transitions?</h2>
+          <p class="text-gray-600">Daylight Saving Time is one of the most common sources of international scheduling errors, and Global Team Clock handles it automatically and correctly. Because the tool uses the browser's native <code style="background:#f0efeb; padding:2px 4px; border-radius:3px;">Intl</code> API backed by the IANA timezone database, every DST transition is accounted for with no manual intervention required. When the United States shifts clocks forward in March, New York's UTC offset changes from -5 to -4, and the displayed time adjusts accordingly. When most of Europe transitions at the end of March, the tool reflects that immediately. Countries that do not observe DST — including India, China, Japan, and most of Sub-Saharan Africa — are always shown with their fixed offset. There are no hardcoded offset values in the tool that could become stale; every offset is computed dynamically from the current date and time, which means the clocks are always right even immediately after a DST transition happens.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">What do the colors on the timeline mean?</h2>
-          <p class="text-gray-600">
-            <strong>Soft yellow</strong>: Daytime hours (6:00-18:00)<br>
-            <strong>Soft indigo</strong>: Nighttime hours (18:00-6:00)<br>
-            <strong>Light green overlay</strong>: Working hours for that city<br>
-            <strong>Bright green overlay</strong>: Hours where ALL cities' work hours overlap<br>
-            <strong>Red line</strong>: Current time in that city
-          </p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">Is Global Team Clock compatible with mobile devices and tablets?</h2>
+          <p class="text-gray-600">Yes, Global Team Clock is fully responsive and designed to work well across smartphones, tablets, and desktop browsers. On narrower mobile screens, the layout adapts so that each city's information — name, local time, UTC offset, and working hours controls — stacks vertically in a compact format that remains readable without horizontal scrolling. The 24-hour timeline bars are also optimized for touch interaction, and all dropdown menus for setting working hours are accessible on touch screens. The tool has been tested on iOS Safari, Android Chrome, and modern desktop browsers including Chrome, Firefox, Safari, and Edge. Because there is no app to download and no account to create, you can access your saved configuration from any device simply by opening your bookmarked or shared URL.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">Does this handle Daylight Saving Time (DST)?</h2>
-          <p class="text-gray-600">Yes! Global Team Clock uses the browser's built-in Intl API, which automatically handles DST transitions. The offsets shown are always current and accurate.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">What do the colors and visual elements on the timeline mean?</h2>
+          <p class="text-gray-600">The 24-hour timeline bar for each city is packed with visual information. The background color of each hour segment indicates whether it is daytime or nighttime in that city: a soft warm yellow represents daytime hours roughly from 6:00 to 18:00, while a muted indigo shade represents nighttime. On top of this background, a semi-transparent light green overlay marks that city's working hours as you have defined them. When multiple cities' working-hour overlays coincide — meaning every added city is simultaneously within its working day — those shared hours glow in a brighter, more saturated green, making the overlap immediately obvious. A thin vertical red line marks the current time in each city, sweeping across the timeline in real time so you can see at a glance how far through the workday each location is. This combination of layers gives you an intuitive, at-a-glance map of where every team member stands in their day.</p>
         </div>
 
         <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">What about half-hour timezones like India (UTC+5:30)?</h2>
-          <p class="text-gray-600">Fully supported. The tool handles all timezone offsets including +5:30 (India), +5:45 (Nepal), +9:30 (Central Australia), and others.</p>
+          <h2 class="text-lg font-semibold text-gray-700 mb-3">Does Global Team Clock collect personal data or track users?</h2>
+          <p class="text-gray-600">Global Team Clock does not collect personal information. The application runs entirely in your browser. No city names, working hour settings, or any other usage data are sent to our servers — there are no servers receiving your interaction data at all. Your language preference and a non-identifying local visitor counter are stored in your browser's <code style="background:#f0efeb; padding:2px 4px; border-radius:3px;">localStorage</code>, which stays on your device and is never transmitted anywhere. The only third-party code on the page is Google AdSense, which may use cookies for advertising personalization as described in our <a href="privacy.html" class="text-teal-600 hover:underline">Privacy Policy</a>. You can opt out of personalized ads at any time through Google's ad settings. We believe that a timezone tool has no legitimate reason to collect behavioral data on its users, and we have designed accordingly.</p>
         </div>
 
-        <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">Do you collect any data?</h2>
-          <p class="text-gray-600">Global Team Clock runs entirely in your browser. No timezone data or city selections are sent to any server. We use localStorage for language preferences and visitor counting. See our <a href="privacy.html" class="text-teal-600 hover:underline">Privacy Policy</a> for details.</p>
-        </div>
-
-        <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">Can I use this on mobile?</h2>
-          <p class="text-gray-600">Yes, Global Team Clock is fully responsive and works on phones and tablets. On smaller screens, the city info and timeline stack vertically for better readability.</p>
-        </div>
-
-        <div>
-          <h2 class="text-lg font-semibold text-gray-700 mb-2">Is it free?</h2>
-          <p class="text-gray-600">Yes, completely free. No sign-up required, no limitations, no premium tier.</p>
-        </div>
       </div>
     </article>
   </main>
@@ -107,8 +89,9 @@
         <nav class="flex flex-wrap gap-4">
           <a href="../index.html" class="hover:text-teal-600">Home</a>
           <a href="about.html" class="hover:text-teal-600">About</a>
-          <a href="privacy.html" class="hover:text-teal-600">Privacy</a>
-          <a href="terms.html" class="hover:text-teal-600">Terms</a>
+          <a href="faq.html" class="hover:text-teal-600">FAQ</a>
+          <a href="privacy.html" class="hover:text-teal-600">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-teal-600">Terms of Service</a>
         </nav>
         <span>&copy; 2026 Global Team Clock</span>
       </div>
