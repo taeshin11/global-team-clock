@@ -1,21 +1,52 @@
 {
   "rewrites": [
-    { "source": "/about", "destination": "/pages/about.html" },
-    { "source": "/about.html", "destination": "/pages/about.html" },
-    { "source": "/faq", "destination": "/pages/faq.html" },
-    { "source": "/faq.html", "destination": "/pages/faq.html" },
-    { "source": "/privacy", "destination": "/pages/privacy.html" },
-    { "source": "/privacy.html", "destination": "/pages/privacy.html" },
-    { "source": "/terms", "destination": "/pages/terms.html" },
-    { "source": "/terms.html", "destination": "/pages/terms.html" }
+    {
+      "source": "/about",
+      "destination": "/pages/about.html"
+    },
+    {
+      "source": "/about.html",
+      "destination": "/pages/about.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/pages/faq.html"
+    },
+    {
+      "source": "/faq.html",
+      "destination": "/pages/faq.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/pages/privacy.html"
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/pages/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/pages/terms.html"
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/pages/terms.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
       ]
     }
-  ]
+  ],
+  "outputDirectory": "."
 }
